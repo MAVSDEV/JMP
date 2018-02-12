@@ -35,5 +35,3 @@ derby.log
 # JRebel
 rebel.xml
 rebel-remote.xml
-
-multi-maven/
