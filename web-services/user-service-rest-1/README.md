@@ -1,5 +1,10 @@
 User Rest API
 
+_To test rest api you can use local setup and Heroku:_
+https://user-service-test.herokuapp.com
+
+* Upload images works only in local setup. Due to Heroku has ephemeral filesystem.
+
 **Get all users:**                  
 `GET     /api/v1/user/all`
                 
@@ -29,10 +34,11 @@ User Rest API
 
 
 **Example of body to save user:**
-<?xml version="1.0" encoding="utf-8"?><user>
+`<?xml version="1.0" encoding="utf-8"?><user>
     <id>1</id>
     <login>redo</login>
     <firstName>Petya</firstName>
     <lastName>Petrovich</lastName>
     <email>bla@gmail.com</email>
-</user>
+</user>`
+
