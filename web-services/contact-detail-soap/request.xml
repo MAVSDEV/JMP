@@ -1,0 +1,41 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="http://epam.com/contactdetail/soap-web-service">
+    <soapenv:Header/>
+    <soapenv:Body>
+
+        <!--Get by id -->
+        <gs:getContactByIdRequest>
+            <gs:id>1</gs:id>
+        </gs:getContactByIdRequest>
+
+
+        <!--Get all -->
+        <gs:getAllContactsRequest/>
+
+
+        <!--Save -->
+        <gs:addContactRequest>
+            <gs:id>1</gs:id>
+            <gs:name>person</gs:name>
+            <gs:phone>+4353453</gs:phone>
+        </gs:addContactRequest>
+
+
+        <!--Update-->
+        <gs:updateContactRequest>
+            <gs:contact>
+                <gs:id>2</gs:id>
+                <gs:name>personnew</gs:name>
+                <gs:phone>+4353453</gs:phone>
+            </gs:contact>
+        </gs:updateContactRequest>
+
+
+        <!--Delete-->
+        <gs:deleteContactRequest>
+            <gs:contactId>2</gs:contactId>
+        </gs:deleteContactRequest>
+
+
+    </soapenv:Body>
+</soapenv:Envelope>
