@@ -12,7 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 public class ContactEndpoint {
     private static final String NAMESPACE_URI = "http://epam.com/contactdetail/soap-web-service";
 
-    private ContactService contactService;
+    private final ContactService contactService;
 
     @Autowired
     public ContactEndpoint(ContactService contactService) {
@@ -23,7 +23,7 @@ public class ContactEndpoint {
     @ResponsePayload
     public GetContactByIdResponse getContact(@RequestPayload GetContactByIdRequest request) {
         GetContactByIdResponse response = new GetContactByIdResponse();
-        response.setContact(contactService.getContactById(request.getId()));
+        response.setContact(contactService.getById(request.getId()));
         return response;
     }
 
@@ -31,7 +31,7 @@ public class ContactEndpoint {
     @ResponsePayload
     public GetAllContactsResponse getAllContacts() {
         GetAllContactsResponse response = new GetAllContactsResponse();
-        response.getContact().addAll(contactService.getAllContacts());
+        response.getContact().addAll(contactService.getAll());
         return response;
     }
 
@@ -45,7 +45,7 @@ public class ContactEndpoint {
         contact.setName(request.getName());
         contact.setPhone(request.getPhone());
 
-        contactService.saveContact(contact);
+        contactService.save(contact);
         response.setContact(contact);
         response.setServiceStatus(serviceStatus);
         return response;
@@ -59,7 +59,7 @@ public class ContactEndpoint {
         contact.setName(request.getContact().getName());
         contact.setPhone(request.getContact().getPhone());
 
-        contactService.updateContact(contact);
+        contactService.update(contact);
         ServiceStatus serviceStatus = new ServiceStatus();
         serviceStatus.setStatusCode("SUCCESS");
         serviceStatus.setMessage("Content Updated Successfully");
@@ -71,10 +71,10 @@ public class ContactEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteContactRequest")
     @ResponsePayload
     public DeleteContactResponse deleteContact(@RequestPayload DeleteContactRequest request) {
-        Contact contact = contactService.getContactById(request.getContactId());
+        Contact contact = contactService.getById(request.getContactId());
         ServiceStatus serviceStatus = new ServiceStatus();
         if (contact != null) {
-            contactService.deleteContact(contact);
+            contactService.delete(contact);
             serviceStatus.setStatusCode("SUCCESS");
             serviceStatus.setMessage("Content Deleted Successfully");
         } else {

@@ -1,6 +1,7 @@
-package com.epam.contactdetail.service;
+package com.epam.contactdetail.services;
 
-import com.epam.contactdetail.soap_web_service.Contact;
+
+import com.epam.contactdetail.models.Contact;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package com.epam.contactdetail.service.impl;
+package com.epam.contactdetail.services.impl;
 
-import com.epam.contactdetail.service.ContactService;
-import com.epam.contactdetail.soap_web_service.Contact;
+import com.epam.contactdetail.models.Contact;
+import com.epam.contactdetail.services.ContactService;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.springframework.stereotype.Component;
