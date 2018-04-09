@@ -1,9 +1,9 @@
-package com.epam.onlineshop.controllers;
+package com.epam.tradesystem.controllers;
 
 
-import com.epam.onlineshop.exception.ProductNotFoundException;
-import com.epam.onlineshop.models.Product;
-import com.epam.onlineshop.services.ProductService;
+import com.epam.tradesystem.exception.ProductNotFoundException;
+import com.epam.tradesystem.models.Product;
+import com.epam.tradesystem.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,21 +22,21 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping("/product")
-    public String getProductById(@RequestParam("id") String productId, Model model) {
+    @RequestMapping("/product/{id}")
+    public String getProductById(@PathVariable("id") String productId, Model model) {
         Product p = productService.getProductById(productId);
         model.addAttribute("product", p);
         return "product";
     }
 
     @RequestMapping
-    public String getList(Model model) {
+    public String getProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
         return "products";
     }
 
     @RequestMapping("/all")
-    public String getAllProducts(Model model) {
+    public String gerAllProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
         return "products";
     }
