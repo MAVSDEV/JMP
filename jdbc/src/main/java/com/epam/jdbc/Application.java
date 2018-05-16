@@ -51,7 +51,7 @@ public class Application implements CommandLineRunner {
         insertLikes(likes, jdbcTemplate);
 
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(
-                "SELECT u.name FROM users u " +
+                "SELECT distinct(u.name) FROM users u " +
                         "WHERE " +
                         "(SELECT count(*) FROM friendships f WHERE MONTH(f.timestamp) = 3 AND YEAR(f.timestamp) = 2018 AND f.userId1=u.id) > 100 " +
                         "AND (SELECT count(*) FROM likes l where MONTH(l.timestamp) = 3 AND YEAR(l.timestamp) = 2018 AND l.userId=u.id) > 100;");
