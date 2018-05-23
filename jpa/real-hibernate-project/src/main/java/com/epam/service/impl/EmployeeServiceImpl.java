@@ -6,12 +6,14 @@ import com.epam.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * Employee Service.
  */
 @Service
+@Transactional
 public class EmployeeServiceImpl extends AbstractService<Employee> implements EmployeeService {
 
     private final EmployeeDao employeeDao;

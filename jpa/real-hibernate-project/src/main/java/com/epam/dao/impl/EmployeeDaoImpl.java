@@ -6,6 +6,7 @@ import com.epam.dao.UnitDao;
 import com.epam.entity.Employee;
 import com.epam.entity.Project;
 import com.epam.entity.Unit;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,8 +31,10 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
         Unit newUnit = unitDao.getById(unitId);
         employeeIds.forEach(employeeId -> {
             Employee dbEmployee = getById(employeeId);
-            dbEmployee.setUnit(newUnit);
-            update(dbEmployee);
+            if (dbEmployee != null) {
+                dbEmployee.setUnit(newUnit);
+                update(dbEmployee);
+            }
         });
     }
 
@@ -42,10 +45,13 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 
         employeeIds.forEach(employeeId -> {
             Employee dbEmployee = getById(employeeId);
-            List<Project> projects = dbEmployee.getProjects();
-            projects.add(newProject);
-            dbEmployee.setProjects(projects);
-            update(dbEmployee);
+            if (dbEmployee != null) {
+                List<Project> projects = dbEmployee.getProjects();
+                projects = projects != null ? projects : Lists.newArrayList();
+                projects.add(newProject);
+                dbEmployee.setProjects(projects);
+                update(dbEmployee);
+            }
         });
     }
 

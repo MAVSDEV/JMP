@@ -13,7 +13,6 @@ import java.util.List;
 public class Employee implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int id;
 
