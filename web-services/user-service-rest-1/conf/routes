@@ -1,0 +1,19 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Common API
+
+GET     /api/v1/user/all                com.epam.userapi.controllers.UserController.getAll()
+GET     /api/v1/user/:id                com.epam.userapi.controllers.UserController.getById(id: String)
+GET     /api/v1/user/:userId/image      com.epam.userapi.controllers.PictureController.download(userId: String)
+
+PUT     /api/v1/user/update             com.epam.userapi.controllers.UserController.update
+
+POST    /api/v1/user/save               com.epam.userapi.controllers.UserController.save
+POST    /api/v1/user/:userId/image/save com.epam.userapi.controllers.PictureController.save(userId: String)
+
+DELETE  /api/v1/user/delete/:id         com.epam.userapi.controllers.UserController.delete(id: String)
+
+GET     /upload-image.html              controllers.Assets.at(path="/public/", file="upload-image.html")
+GET     /assets/images/*file   controllers.Assets.at(path="/public/images/", file)

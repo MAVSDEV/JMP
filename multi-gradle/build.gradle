@@ -1,0 +1,26 @@
+group 'com.epam.multigradle'
+version '1.0-SNAPSHOT'
+
+allprojects {
+    apply plugin: 'java'
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+test.maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+test.forkEvery = 100
+test {
+    reports.html.enabled = false
+    reports.junitXml.enabled = false
+}
+
+tasks.withType(JavaCompile) {
+    options.fork = true
+}
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

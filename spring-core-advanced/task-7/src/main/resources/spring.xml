@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="beanA" class="com.epam.springcore.beans.BeanA">
+        <property name="name" value="Bean A"/>
+    </bean>
+
+    <bean id="beanB" class="com.epam.springcore.beans.BeanB">
+        <constructor-arg ref="beanA"/>
+    </bean>
+
+    <bean id="beanC" class="com.epam.springcore.beans.BeanC" scope="singleton">
+        <lookup-method name="getBeanD" bean="beanD" />
+    </bean>
+
+    <bean id="beanD" class="com.epam.springcore.beans.BeanD" scope="prototype"/>
+
+    <!--replacement method-->
+    <bean id="beanEReplacer" class="com.epam.springcore.beans.BeanEReplacer"/>
+    <bean id="beanE" class="com.epam.springcore.beans.BeanE">
+        <replaced-method name="getName" replacer="beanEReplacer">
+            <arg-type>String</arg-type>
+        </replaced-method>
+    </bean>
+
+    <bean id="beanF" class="com.epam.springcore.beans.BeanF"/>
+
+</beans>

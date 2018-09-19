@@ -1,0 +1,67 @@
+Contact Detail SOAP API
+
+------ Get by id ----------
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://epam.com/contactdetail/soap-web-service">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:getContactByIdRequest>
+         <gs:id>1</gs:id>
+      </gs:getContactByIdRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+------ Get all --------
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://epam.com/contactdetail/soap-web-service">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:getAllContactsRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+------ Save ---------
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://epam.com/contactdetail/soap-web-service">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:addContactRequest>
+         <gs:id>1</gs:id>
+         <gs:name>person</gs:name>
+         <gs:phone>+4353453</gs:phone>
+      </gs:addContactRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+
+------- Update -------
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://epam.com/contactdetail/soap-web-service">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:updateContactRequest>
+      	<gs:contact>
+      		<gs:id>2</gs:id>
+        	<gs:name>personnew</gs:name>
+        	<gs:phone>+4353453</gs:phone>
+      	</gs:contact>
+      </gs:updateContactRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+------- Delete -------
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+				  xmlns:gs="http://epam.com/contactdetail/soap-web-service">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <gs:deleteContactRequest>
+  		<gs:contactId>2</gs:contactId>
+      </gs:deleteContactRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
