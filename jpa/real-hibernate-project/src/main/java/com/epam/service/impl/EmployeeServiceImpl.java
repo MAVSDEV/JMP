@@ -26,6 +26,9 @@ public class EmployeeServiceImpl extends AbstractService<Employee> implements Em
 
     @Override
     public void addToUnit(List<Integer> employeeIds, Integer unitId) {
+
+        employeeIds.forEach();
+
         employeeDao.addToUnit(employeeIds, unitId);
     }
 

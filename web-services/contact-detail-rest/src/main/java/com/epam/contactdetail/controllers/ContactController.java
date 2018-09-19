@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.List;
 
 @RestController
@@ -20,7 +23,20 @@ public class ContactController {
     }
 
     @RequestMapping("/{contactId}")
-    public Contact getById(@PathVariable String contactId) {
+    public Contact getById(@PathVariable String contactId) throws IOException {
+
+
+        String str;
+        BufferedReader bufferedReader = new BufferedReader(new StringReader(""));
+        String s = bufferedReader.readLine();
+        for (int i = 0; i < s.split(" ").length; i++) {
+
+            System.out.println(i);
+
+
+        }
+
+
         return contactService.getById(contactId);
     }
 

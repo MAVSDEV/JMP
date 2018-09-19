@@ -11,6 +11,7 @@ public abstract class AbstractService<T> implements BaseService<T> {
     private final BaseDao<T> baseDao;
 
     AbstractService(BaseDao<T> baseDao) {
+
         this.baseDao = baseDao;
     }
 
